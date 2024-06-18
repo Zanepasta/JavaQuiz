@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/class-diagram
+Highscore *-- HighscoreItem
+Quiz *- QuizFrame
+Quiz o-- Question
+QuizFrame o-- Question
+Main o-- Menu
+Menu *-- SettingsFrame
+SettingsFrame *- NewQuestionFrame
+Menu o- Quiz
+Main o-- Highscore
+NewQuestionFrame o- Quiz
+
+class Main {}
+class Menu {}
+class Question {}
+class Highscore {}
+class HighscoreItem {
+}
+class NewQuestionFrame {}
+class Quiz {}
+class QuizFrame {}
+class SettingsFrame {}
+@enduml

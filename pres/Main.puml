@@ -1,0 +1,16 @@
+@startuml
+class Main {
+-{static}Menu menu
++{static}Highscore highscore
++{static}Quiz quiz
+-{static}String gameMode
+--
+..Getter-Funktioenen..
++{static}String getGameMode()
+..Setter-Funktioenen..
++{static}void setGameMode(String gameMode)
+..
++{static}void main(String[] args)
++{static}void schowMenu()
+}
+@enduml

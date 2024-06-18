@@ -1,0 +1,85 @@
+@startuml
+Main::Quiz o-- Quiz
+Quiz::Question o- Question
+Main::Highscore o-- Highscore
+Highscore::HighscoreItem *- HighscoreItem
+class Main {
+-{static}Menu menu
++{static}Highscore highscore
++{static}Quiz quiz
+-{static}String gameMode
+--
+..Getter-Funktioenen..
++{static}String getGameMode()
+..Setter-Funktioenen..
++{static}void setGameMode(String gameMode)
+..
++{static}void main(String[] args)
++{static}void schowMenu()
+}
+class Quiz {
+-{static}ArrayList<Question> questionList
++{static}QuizFrame quizFrame
+-{static}int QuestionIndex
+-boolean joker
+-int score
+--
+..Konstruktor..
++Quiz(String gameMode)
+..Getter-Funktionen..
++boolean getJoker()
+..Setter-Funktionen..
++void setJoker(boolean joker)
++void addScore()
++void addQuestion(Question question)
+..
++void start()
++void nextQuestion()
++void finish()
+-void shuffleQuestions()
+-void loadQuestionsFromJson()
+-void saveQuestionsToJson()
+}
+class Question {
+-String question
+-String rightAnswer
+-String[] answerList
+--
+..Konstruktor..
++Question(String question,
+String rightAnswer,
+String[] answerList)
+..Getter-Funktionen..
++String getQuestion()
++String getRightAnswer()
++String[] getAnswerList()
+..Setter-Funktionen..
++void setQuestion(String question)
++void setRightAnswer(String rightAnswer)
++void setAnswerList(String[] answerList)
+}
+class Highscore {
+-HighscoreItem[] highscoreList
+--
+..Konstruktor..
++Highscore()
+..
++void addHighscoreItem(HighscoreItem item)
++void showHighscore()
++void saveHighscoreFromJson()
++void loadHighscoreFromJson()
+}
+class HighscoreItem {
+-String name
+-int score
+--
+..Konstruktor..
++HighscoreItem(String name, int score)
+..Getter-Funktionen..
++String getName()
++int getScore()
+..Setter-Funktionen..
++void setName(String name)
++void setScore(int score)
+}
+@enduml

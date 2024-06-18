@@ -1,0 +1,181 @@
+@startuml
+'https://plantuml.com/class-diagram
+Highscore *-- HighscoreItem
+Quiz *- QuizFrame
+Quiz o-- Question
+QuizFrame o-- Question
+Main o-- Menu
+Menu *-- SettingsFrame
+SettingsFrame *- NewQuestionFrame
+Menu o- Quiz
+Main o-- Highscore
+NewQuestionFrame::Quiz o- Quiz
+
+class Main {
+-{static}Menu menu
++{static}Highscore highscore
++{static}Quiz quiz
+-{static}String gameMode: "normal"
+
++{static}void main(String[] args)
++{static}void showMenu()
++{static}String getGameMode()
++{static}void setGameMode(String gameMode)
+}
+class Menu {
+-JFrame frame
+#JLabel titleL
+#JButton startBtn
+#JButton settingsBtn
+#JButton highscoreBtn
+#JButton exitBtn
+--
+..Konstruktor..
++Menu()
+..
++void show()
+}
+class Question {
+-String question
+-String rightAnswer
+-String[] answerList
+--
+..Konstruktor..
++Question(String question,
+String rightAnswer,
+String[] answerList)
+..Getter-Funktionen..
++String getQuestion()
++String getRightAnswer()
++String[] getAnswerList()
+..Setter-Funktionen..
++void setQuestion(String question)
++void setRightAnswer(String rightAnswer)
++void setAnswerList(String[] answerList)
+}
+class Highscore {
+-HighscoreItem[] highscoreList
+--
+..Konstruktor..
++Highscore()
+..
++void addHighscoreItem(HighscoreItem item)
++void showHighscore()
++void saveHighscoreFromJson()
++void loadHighscoreFromJson()
+}
+class HighscoreItem {
+-String name
+-int score
+--
+..Konstruktor..
++HighscoreItem(String name, int score)
+..Getter-Funktionen..
++String getName()
++int getScore()
+..Setter-Funktionen..
++void setName(String name)
++void setScore(int score)
+}
+class NewQuestionFrame {
+-JFrame frame
+#JLabel titleL
+-JLabel questionL
+-JTextField questionTf
+-JLabel rightAnswerL
+-JTextField rightAnswerTf
+-JLabel answerListL
+-ArrayList<JLabel> answerIndexLList
+-ArrayList<JTextField> answerListTfList
+-ArrayList<JButton> deleteAnswerBtnList
+-JButton addAnswerBtn
+-JButton saveBtn
+-JButton cancelBtn
+-Quiz quiz
+--
+..Konstruktor..
++NewQuestionFrame()
+..
+-void addAnswer()
+-void deleteAnswer(JTextField answerTf)
+-void saveQuestion()
+-void relocateElements()
+}
+class Quiz {
+-{static}ArrayList<Question> questionList
++{static}QuizFrame quizFrame
+-{static}int QuestionIndex
+-boolean joker
+-int score
+--
+..Konstruktor..
++Quiz(String gameMode)
+..Getter-Funktionen..
++boolean getJoker()
+..Setter-Funktionen..
++void setJoker(boolean joker)
++void addScore()
++void addQuestion(Question question)
+..
++void start()
++void nextQuestion()
++void finish()
+-void shuffleQuestions()
+-void loadQuestionsFromJson()
+-void saveQuestionsToJson()
+}
+class QuizFrame {
+..Konstanten..
+-{static}int QUESTION_TIME
+-{static}int QUIZ_TIME
+..
+-JFrame frame
+-JLabel questionL
+-JButton nextBtn
+-JButton jokerBtn
+-JProgressBar questionTimePb
+-JProgressBar quizTimePb
+-String gameMode
+-JTextField answerTf
+-JLabel answerL
+-ArrayList<JButton> answerBtnList
+-Question question
+-int selectedAnswer
+-boolean answerChecked
+-Timer questionTimer
+-Timer quizTimer
+-int questionTimeLeft
+-int quizTimeLeft
+--
+..Konstruktor..
++QuizFrame(String gameMode)
+..Getter-Funktionen..
+-TimerTask getQuestionTimerTask()
+-TimerTask getQuizTimerTask()
+..Setter-Funktionen..
++void setQuestion(Question question, int questionIndex)
+..
+-void selectButton(JButton button)
+-void refreshFrameSize()
+-void checkAnswer()
+-void refreshButtons()
++void dispose()
+}
+class SettingsFrame {
+-JFrame frame
+#JLabel titleL
+#JButton saveBtn
+#JLabel gameModeL
+#JButton gameModeHelpBtn
+#JButton newQuestionBtn
+-JToggleButton normalModeTBtn
+-JToggleButton manuelModeTBtn
+--
+..Konstruktor..
++SettingsFrame()
+..
+-void jToggleButtonActionPerformed(JToggleButton button)
+-void switchGameMode()
+-void gameModeHelpBtnClickEvent()
+}
+@enduml

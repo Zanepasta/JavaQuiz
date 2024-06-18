@@ -1,0 +1,20 @@
+@startuml
+class Question {
+-String question
+-String rightAnswer
+-String[] answerList
+--
+..Konstruktor..
++Question(String question,
+String rightAnswer,
+String[] answerList)
+..Getter-Funktionen..
++String getQuestion()
++String getRightAnswer()
++String[] getAnswerList()
+..Setter-Funktionen..
++void setQuestion(String question)
++void setRightAnswer(String rightAnswer)
++void setAnswerList(String[] answerList)
+}
+@enduml

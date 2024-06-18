@@ -1,0 +1,11 @@
+@startuml
+Main o-- Quiz
+Quiz o- Question
+Main o-- Highscore
+Highscore *- HighscoreItem
+class Main {}
+class Quiz {}
+class Question {}
+class Highscore {}
+class HighscoreItem {}
+@enduml
