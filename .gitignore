@@ -1,6 +1,7 @@
 exp/
 out/
 pres/
+JavaDoc/
 
 *.iml
 JavaQuiz.txt
