@@ -2,6 +2,6 @@ exp/
 out/
 pres/
 
-*iml
+*.iml
 JavaQuiz.txt
 JavaQuizV2.txt
